@@ -32,7 +32,7 @@ function Sign-BinaryFile {
         {            
             if(![string]::IsNullOrEmpty($SM_CLIENT_CERT_FILE_URL))
             {
-                $certLocation = Join-Path $tempDirectory "digiCert"
+                $certLocation = Join-Path $tempDirectory "digiCert.p12"
                 Invoke-WebRequest -Uri "$SM_CLIENT_CERT_FILE_URL" -OutFile $certLocation
                 if(Test-Path $certLocation)
                 {
