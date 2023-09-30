@@ -2,6 +2,7 @@
 $GitGlobalUserName         = "Dmytro Sindeli" 
 $tenant                    = "vertexinc.com"
 $vmAdminUserName           = "vmadmin"
+$saPassword                = "G/7gwmfohn5bacdf4oo"
 $GitGlobalEmail            = "$($GitGlobalUserName.Replace(" ", ".").ToLower())@$tenant" 
 
 
@@ -104,7 +105,7 @@ Start-BitsTransfer -Source ([URI]("https://ciellosarchive.blob.core.windows.net/
 $mountDest = Mount-DiskImage -ImagePath $buildPath\enu_sql_server_2022_enterprise_edition_x64_dvd_aa36de9e.iso
 $hostName = [System.Net.Dns]::GetHostEntry("").HostName
 
-$installCommand = "F:\setup.exe /Q /IACCEPTSQLSERVERLICENSETERMS /ACTION='install' /PID='J4V48-P8MM4-9N3J9-HD97X-DYMRM' /FEATURES=SQL,AS,IS /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS='$hostName\$vmAdminUserName' /SECURITYMODE='SQL' /ASSYSADMINACCOUNTS='$hostName\$vmAdminUserName'" 
+$installCommand = "F:\setup.exe /Q /IACCEPTSQLSERVERLICENSETERMS /ACTION='install' /PID='J4V48-P8MM4-9N3J9-HD97X-DYMRM' /FEATURES=SQL,AS,IS /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS='$hostName\$vmAdminUserName' /SECURITYMODE='SQL' /SAPWD='$saPassword' /ASSYSADMINACCOUNTS='$hostName\$vmAdminUserName'" 
 Invoke-Expression -Command $installCommand
 
 ###### Install software
@@ -117,7 +118,7 @@ invoke-choco install nodejs-lts -y
 Install-WindowsFeature -name Web-Server -IncludeManagementTools -IncludeAllSubFeature
 invoke-choco install webdeploy -y
 invoke-choco install urlrewrite -y
-invoke-choco install dotnetcore-sdk dotnet-6.0-sdk dotnet-7.0-sdk dotnet-aspnetcoremodule-v2 -y
+invoke-choco install dotnetcore-sdk dotnet-6.0-sdk dotnet-7.0-sdk dotnet-aspnetcoremodule-v2 --force -y
 
 #set firewall rules
 Remove-NetFirewallRule -Group "Custom SQL"
