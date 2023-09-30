@@ -112,7 +112,8 @@ Invoke-Expression -Command $installCommand
 invoke-choco install git.install --force -y
 invoke-choco install visualstudiocode vscode-gitlens vscode-csharp vscode-powershell vscode-intellicode --force -y
 invoke-choco install visualstudio2022buildtools --package-parameters "--passive --locale en-US" --force -y
-invoke-choco install -y python visualstudio2022-workload-vctools visualstudio2022-workload-nativedesktop visualstudio2022-workload-netweb visualstudio2022-workload-node --force
+invoke-choco install -y python visualstudio2022-workload-manageddesktopbuildtools visualstudio2022-workload-universalbuildtools visualstudio2022-workload-webbuildtools --force
+
 invoke-choco install sql-server-management-studio --force -y
 invoke-choco install nodejs-lts -y
 Install-WindowsFeature -name Web-Server -IncludeManagementTools -IncludeAllSubFeature
