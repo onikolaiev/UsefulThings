@@ -117,6 +117,7 @@ invoke-choco install sql-server-management-studio --force -y
 invoke-choco install nodejs-lts -y
 Install-WindowsFeature -name Web-Server -IncludeManagementTools -IncludeAllSubFeature
 Add-WindowsFeature NET-HTTP-Activation
+Add-WindowsFeature NET-WCF-HTTP-Activation45
 invoke-choco install webdeploy -y
 invoke-choco install urlrewrite -y
 invoke-choco install dotnetcore-sdk dotnet-6.0-sdk dotnet-7.0-sdk dotnet-aspnetcoremodule-v2 --force -y
