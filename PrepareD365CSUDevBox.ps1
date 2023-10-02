@@ -1,6 +1,6 @@
 # Set prerequisites
-$GitGlobalUserName         = "Dmytro Sindeli" 
-$tenant                    = "vertexinc.com"
+$GitGlobalUserName         = "Petr Ivanov" 
+$tenant                    = "contoso.com"
 $vmAdminUserName           = "vmadmin"
 $saPassword                = "G/7gwmfohn5bacdf4oo"
 $GitGlobalEmail            = "$($GitGlobalUserName.Replace(" ", ".").ToLower())@$tenant" 
